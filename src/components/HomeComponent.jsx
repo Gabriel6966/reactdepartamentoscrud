@@ -16,7 +16,8 @@ export default class HomeComponent extends Component {
     loadDepartamentos = () => {
         this.service.getDepartamentos().then((result) => {
             this.setState({
-                departamentos: result
+                departamentos: result,
+                status: true
             })
         })
     }
@@ -30,15 +31,15 @@ export default class HomeComponent extends Component {
 
         if (this.state.status == true) {
             return (
-                <div>
+                <div style={{margin: "20px"}}>
                     <h1>Departamentos Page</h1>
                 
-                    <table className="table table-active">
+                    <table className="table table-success">
                         <thead>
                             <tr>
-                                <th>Numero: </th>
-                                <th>Nombre: </th>
-                                <th>Localidad: </th>
+                                <th>Numero</th>
+                                <th>Nombre</th>
+                                <th>Localidad</th>
                             </tr>
                         </thead>
                         <tbody>
