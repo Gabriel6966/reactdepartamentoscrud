@@ -22,18 +22,26 @@ export default class HomeComponent extends Component {
         })
     }
 
+    deleteDepartamento = (numero) => {
+        this.service.deleteDepartamento(numero).then((result) => {
+            this.loadDepartamentos();
+        })
+    }
+
     componentDidMount() {
         this.loadDepartamentos();
     }
+
+
 
 
     render() {
 
         if (this.state.status == true) {
             return (
-                <div style={{margin: "20px"}}>
+                <div style={{ margin: "20px" }}>
                     <h1>Departamentos Page</h1>
-                
+
                     <table className="table table-success">
                         <thead>
                             <tr>
@@ -44,17 +52,22 @@ export default class HomeComponent extends Component {
                         </thead>
                         <tbody>
                             {
-                                this.state.departamentos.map((departamento,index)=>{
-                                    return(
+                                this.state.departamentos.map((departamento, index) => {
+                                    return (
                                         <tr key={index}>
                                             <td>{departamento.numero}</td>
                                             <td>{departamento.nombre}</td>
                                             <td>{departamento.localidad}</td>
                                             <td>
-                                                <NavLink className="btn btn-info" to={"/update/"+ departamento.numero+ "/" +
+                                                <button className="btn btn-danger" onClick={() => this.deleteDepartamento(departamento.numero)}>Eliminar</button>
+                                                <NavLink className="btn btn-info" to={"/update/" + departamento.numero + "/" +
                                                     departamento.nombre + "/" + departamento.localidad}>
-                                                        Update
-                                                
+                                                    Update
+
+                                                </NavLink>
+                                                <NavLink className="btn btn-warning" to={"/confirmdelete/" + departamento.numero + "/" +
+                                                    departamento.nombre + "/" + departamento.localidad}>
+                                                    Confirmar Eliminación
                                                 </NavLink>
                                             </td>
                                         </tr>
@@ -66,8 +79,8 @@ export default class HomeComponent extends Component {
                 </div>
             )
         } else {
-            return(
-                <img src={loading} style={{width: '1700px', height: 'auto'}} alt="loading..."/>
+            return (
+                <img src={loading} style={{ width: '1700px', height: 'auto' }} alt="loading..." />
             )
 
         }

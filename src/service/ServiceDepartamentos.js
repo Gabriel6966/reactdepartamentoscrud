@@ -3,6 +3,22 @@ import Global from "../Global";
 
 export default class ServiceDepartamentos {
 
+    deleteDepartamento(numero){
+        return new Promise(function(resolve,reject){
+            let url = Global.apiDepartamentos;
+            let request = "api/Departamentos/" + numero;
+            axios.delete(url+request).then(response=>{
+                console.log("eliminando departamento");
+                resolve(response.data);
+            }).catch((err)=>{
+                console.log(err);
+                reject(err);
+            })
+            
+            
+        })
+    }
+
     insertDepartamento(departamento) {
         return new Promise(function (resolve, reject) {
             let url = Global.apiDepartamentos;
@@ -31,9 +47,6 @@ export default class ServiceDepartamentos {
             })
         })
     }
-
-
-
 
     getDepartamentos() {
         return new Promise(function (resolve) {
