@@ -4,13 +4,28 @@ import Global from "../Global";
 export default class ServiceDepartamentos {
 
     insertDepartamento(departamento) {
-        return new Promise(function (resolve,reject) {
+        return new Promise(function (resolve, reject) {
             let url = Global.apiDepartamentos;
             let request = "api/Departamentos";
             axios.post(url + request, departamento).then(response => {
                 console.log("insertando departamento");
                 resolve(response.data);
-            }).catch((err)=>{
+            }).catch((err) => {
+                console.log(err);
+                reject(err);
+            })
+        })
+    }
+
+    updateDepartamento(departamento) {
+        return new Promise(function (resolve, reject) {
+            let url = Global.apiDepartamentos;
+            let request = "api/Departamentos";
+            axios.put(url + request, departamento).then(response => {
+                console.log("actualizando departamento");
+                resolve(response.data);
+
+            }).catch((err) => {
                 console.log(err);
                 reject(err);
             })
