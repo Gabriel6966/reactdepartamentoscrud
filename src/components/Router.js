@@ -6,6 +6,8 @@ import CreateDepartamento from './CreateDepartamento'
 import UpdateDepartamento from './UpdateDepartamento'
 //import DeleteComponent from './DeleteComponent'
 import ConfirmDelete from './ConfirmDelete'
+import HospitalesMultiples from './HospitalesMultiples'
+import TrabajadoresComponent from './TrabajadoresComponent'
 
 export default class Router extends Component {
     render() {
@@ -19,13 +21,6 @@ export default class Router extends Component {
             )
         }
 
-        //function DeleteDepartamentoElement(){
-        //    let {numero} = useParams();
-        //    return(
-        //        <DeleteComponent
-        //        numero={numero}/>
-        //    )
-        //}
         function ConfirmDeleteElement(){
             let{numero,nombre,localidad}= useParams();
             return(
@@ -44,8 +39,9 @@ export default class Router extends Component {
                     <Route path="/" element={<HomeComponent />} />
                     <Route path="/create" element={<CreateDepartamento/>}/>
                     <Route path="/update/:numero/:nombre/:localidad" element={<UpdateDepartamentoElement/>}/>
-                    {/*<Route path="/delete/:numero" element={<DeleteDepartamentoElement/>}/>*/}
                     <Route path="/confirmdelete/:numero/:nombre/:localidad" element={<ConfirmDeleteElement/>}/>
+                    <Route path="/hospitales" element={<HospitalesMultiples/>}/>
+                    <Route path="/trabajadores" element={<TrabajadoresComponent/>}/>
                 </Routes>
             </BrowserRouter> 
     )
