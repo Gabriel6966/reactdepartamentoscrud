@@ -69,6 +69,7 @@ export default class HospitalesMultiples extends Component {
                 </form>
                 {
                     this.state.hospitalesSelect.length !=0 &&
+                    //El id de aqui se pone en el let del trabajadores component
                     (<TrabajadoresComponent hospitalesSelect={this.state.hospitalesSelect}/>)
                 }
             </div>
